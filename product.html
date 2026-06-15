@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product | Noirvane</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body data-page="product">
+  <nav class="navbar" role="navigation">
+    <div class="nav-container">
+      <a href="index.html" class="logo">NOIR<span>VANE</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="shop.html?cat=tops">Tops</a></li>
+        <li><a href="shop.html?cat=outerwear">Outerwear</a></li>
+        <li><a href="shop.html?cat=accessories">Accessories</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="nav-icon" data-open-search aria-label="Search"><i class="fas fa-search"></i></button>
+        <button class="nav-icon" data-open-cart aria-label="Cart"><i class="fas fa-shopping-bag"></i><span class="cart-count">0</span></button>
+        <button class="mobile-menu-btn nav-icon" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="closeMobileMenu"><i class="fas fa-times"></i></button>
+    <ul class="mobile-menu-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
+  </div>
+
+  <div class="search-modal" id="searchModal">
+    <div class="search-input-wrapper">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search products...">
+      <button class="close-search" id="closeSearch"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header"><h3>Shopping Cart</h3><button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-subtotal"><span>Subtotal</span><span id="cartTotal">$0.00</span></div>
+      <a href="cart.html" class="checkout-btn" style="margin-bottom:0.5rem;background:var(--surface);">View Cart</a>
+      <a href="checkout.html" class="checkout-btn">Checkout</a>
+    </div>
+  </div>
+
+  <main class="product-page">
+    <div class="product-gallery">
+      <div class="gallery-main">
+        <img id="mainImage" src="" alt="" loading="eager">
+      </div>
+    </div>
+
+    <div class="product-details">
+      <div class="product-category" id="productCategory"></div>
+      <h1 id="productName"></h1>
+      <div class="product-meta">
+        <div class="rating" id="productRating"></div>
+        <span style="color:var(--text-muted);">|</span>
+        <span style="color:var(--text-muted);font-size:0.85rem;">SKU: <span id="productSku"></span></span>
+        <span style="color:var(--text-muted);">|</span>
+        <span style="color:var(--text-muted);font-size:0.85rem;">Fit: <span id="productFit"></span></span>
+      </div>
+
+      <div class="product-price" id="productPrice"></div>
+      <p class="product-description" id="productDesc"></p>
+
+      <div class="selector-group">
+        <label>Select Size</label>
+        <div class="size-options" id="sizeSelector"></div>
+      </div>
+
+      <div class="selector-group">
+        <label>Select Color</label>
+        <div class="color-options" id="colorSelector"></div>
+      </div>
+
+      <div class="selector-group">
+        <label>Quantity</label>
+        <div class="quantity-selector">
+          <button id="qtyMinus" aria-label="Decrease quantity">-</button>
+          <input type="number" id="qtyInput" value="1" min="1" max="10" readonly aria-label="Quantity">
+          <button id="qtyPlus" aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+
+      <div class="product-actions-row">
+        <button class="add-to-cart-large" id="addToCartBtn">
+          <i class="fas fa-shopping-bag"></i> Add to Cart
+        </button>
+        <button class="wishlist-large" id="productWishlist" aria-label="Add to wishlist">
+          <i class="fas fa-heart"></i>
+        </button>
+      </div>
+
+      <table class="specs-table">
+        <tr><td>Material</td><td id="productMaterial"></td></tr>
+        <tr><td>Fit</td><td id="productFitSpec"></td></tr>
+        <tr><td>Stock</td><td id="productStock"></td></tr>
+        <tr><td>SKU</td><td id="productSkuSpec"></td></tr>
+      </table>
+    </div>
+  </main>
+
+  <section class="section">
+    <div class="reviews-section">
+      <h2 style="font-size:1.5rem;margin-bottom:1.5rem;">Customer Reviews</h2>
+      <div id="reviewsList"></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="section-header reveal">
+      <h2>You May Also Like</h2>
+      <p>Complete your look with these curated pieces</p>
+    </div>
+    <div id="relatedProducts"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">NOIR<span>VANE</span></a>
+        <p>Noirvane — Exact product photography. Premium quality.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">All Products</a></li>
+          <li><a href="shop.html?cat=tops">Tops</a></li>
+          <li><a href="shop.html?cat=accessories">Accessories</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Noirvane. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

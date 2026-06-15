@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop the full Noirvane collection. Filter by category, price, and style. Exact product photography.">
+  <title>Shop | Noirvane</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body data-page="shop">
+  <nav class="navbar" role="navigation">
+    <div class="nav-container">
+      <a href="index.html" class="logo">NOIR<span>VANE</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="shop.html?cat=tops">Tops</a></li>
+        <li><a href="shop.html?cat=outerwear">Outerwear</a></li>
+        <li><a href="shop.html?cat=accessories">Accessories</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="nav-icon" data-open-search aria-label="Search"><i class="fas fa-search"></i></button>
+        <button class="nav-icon" data-open-cart aria-label="Cart"><i class="fas fa-shopping-bag"></i><span class="cart-count">0</span></button>
+        <button class="mobile-menu-btn nav-icon" id="mobileMenuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="closeMobileMenu"><i class="fas fa-times"></i></button>
+    <ul class="mobile-menu-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop All</a></li>
+      <li><a href="shop.html?cat=tops">Tops</a></li>
+      <li><a href="shop.html?cat=bottoms">Bottoms</a></li>
+      <li><a href="shop.html?cat=outerwear">Outerwear</a></li>
+      <li><a href="shop.html?cat=footwear">Footwear</a></li>
+      <li><a href="shop.html?cat=accessories">Accessories</a></li>
+    </ul>
+  </div>
+
+  <div class="search-modal" id="searchModal">
+    <div class="search-input-wrapper">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search products...">
+      <button class="close-search" id="closeSearch"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header"><h3>Shopping Cart</h3><button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-subtotal"><span>Subtotal</span><span id="cartTotal">$0.00</span></div>
+      <a href="cart.html" class="checkout-btn" style="margin-bottom:0.5rem;background:var(--surface);">View Cart</a>
+      <a href="checkout.html" class="checkout-btn">Checkout</a>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:2rem;">
+    <div class="shop-layout">
+      <aside class="shop-sidebar">
+        <div class="filter-section">
+          <h4>Search</h4>
+          <div style="position:relative;">
+            <input type="text" id="shopSearch" placeholder="Search products..." style="width:100%;padding:0.7rem;background:var(--surface);border:1px solid var(--glass-border);border-radius:var(--radius-sm);color:var(--text);outline:none;font-size:0.9rem;">
+            <i class="fas fa-search" style="position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:0.85rem;"></i>
+          </div>
+        </div>
+        <div class="filter-section">
+          <h4>Categories</h4>
+          <label class="filter-option"><input type="checkbox" class="cat-filter" value="tops"> Tops</label>
+          <label class="filter-option"><input type="checkbox" class="cat-filter" value="hoodies"> Hoodies & Sweatshirts</label>
+          <label class="filter-option"><input type="checkbox" class="cat-filter" value="outerwear"> Outerwear</label>
+          <label class="filter-option"><input type="checkbox" class="cat-filter" value="bottoms"> Bottoms</label>
+          <label class="filter-option"><input type="checkbox" class="cat-filter" value="footwear"> Footwear</label>
+          <label class="filter-option"><input type="checkbox" class="cat-filter" value="accessories"> Accessories</label>
+        </div>
+        <div class="filter-section">
+          <h4>Subcategories</h4>
+          <label class="filter-option"><input type="checkbox" class="sub-filter" value="Oversized Tees"> Oversized Tees</label>
+          <label class="filter-option"><input type="checkbox" class="sub-filter" value="Hoodies"> Hoodies</label>
+          <label class="filter-option"><input type="checkbox" class="sub-filter" value="Crewnecks"> Crewnecks</label>
+          <label class="filter-option"><input type="checkbox" class="sub-filter" value="Leather Jackets"> Leather Jackets</label>
+          <label class="filter-option"><input type="checkbox" class="sub-filter" value="Blazers"> Blazers</label>
+          <label class="filter-option"><input type="checkbox" class="sub-filter" value="Cargo Pants"> Cargo Pants</label>
+          <label class="filter-option"><input type="checkbox" class="sub-filter" value="Baggy Jeans"> Baggy Jeans</label>
+          <label class="filter-option"><input type="checkbox" class="sub-filter" value="Sneakers"> Sneakers</label>
+          <label class="filter-option"><input type="checkbox" class="sub-filter" value="Watches"> Watches</label>
+          <label class="filter-option"><input type="checkbox" class="sub-filter" value="Sunglasses"> Sunglasses</label>
+          <label class="filter-option"><input type="checkbox" class="sub-filter" value="Bags"> Bags</label>
+        </div>
+        <div class="filter-section">
+          <h4>Price Range</h4>
+          <input type="range" class="price-slider" id="priceSlider" min="0" max="600" value="600" aria-label="Price range">
+          <div class="price-display"><span>$0</span><span id="priceValue">$600.00</span></div>
+        </div>
+      </aside>
+
+      <div>
+        <div class="shop-header reveal">
+          <div>
+            <h1 style="font-size:1.5rem;">All Products</h1>
+            <span class="results-count" id="resultsCount">Loading...</span>
+          </div>
+          <select class="sort-select" id="sortSelect" aria-label="Sort products">
+            <option value="featured">Featured</option>
+            <option value="newest">Newest</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+          </select>
+        </div>
+        <div id="shopGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">NOIR<span>VANE</span></a>
+        <p>Noirvane — Exact product photography. Premium quality.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">All Products</a></li>
+          <li><a href="shop.html?cat=tops">Tops</a></li>
+          <li><a href="shop.html?cat=bottoms">Bottoms</a></li>
+          <li><a href="shop.html?cat=accessories">Accessories</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Noirvane. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
